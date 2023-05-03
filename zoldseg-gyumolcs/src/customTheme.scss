@@ -1,0 +1,78 @@
+@import "@angular/material/theming";
+@include mat-core();
+
+$zoldseg-gyumolcs-primary: (
+  50: #f9e6eb,
+  100: #f0bfcd,
+  200: #e795ac,
+  300: #dd6b8a,
+  400: #d54b71,
+  500: #ce2b58,
+  600: #c92650,
+  700: #c22047,
+  800: #bc1a3d,
+  900: #b0102d,
+  A100: #ffe0e4,
+  A200: #ffadb8,
+  A400: #ff7a8d,
+  A700: #ff6077,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: white,
+  ),
+);
+
+$zoldseg-gyumolcs-accent: (
+  50: #e5edee,
+  100: #bdd2d4,
+  200: #91b4b8,
+  300: #65969c,
+  400: #448086,
+  500: #236971,
+  600: #1f6169,
+  700: #1a565e,
+  800: #154c54,
+  900: #0c3b42,
+  A100: #7aebff,
+  A200: #47e3ff,
+  A400: #14dbff,
+  A700: #00d4fa,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: $black-87-opacity,
+    A200: $black-87-opacity,
+    A400: $black-87-opacity,
+    A700: white,
+  ),
+);
+
+$primary-palette: mat-palette($zoldseg-gyumolcs-primary);
+$accent-palette: mat-palette($zoldseg-gyumolcs-accent);
+
+$primary: mat-palette($primary-palette, 500);
+$accent: mat-palette($accent-palette, 500);
+
+$theme: mat-light-theme($primary, $accent);
+
+@include angular-material-theme($theme);

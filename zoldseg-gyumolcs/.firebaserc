@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "zoldseggyumolcs-3f792": {
+      "hosting": {
+        "zoldseg-gyumolcs": [
+          "zoldseggyumolcs-3f792"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "zoldseggyumolcs-3f792"
+  }
+}

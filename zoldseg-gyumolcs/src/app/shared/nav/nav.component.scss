@@ -1,0 +1,45 @@
+mat-toolbar {
+  flex: 1 1 auto;
+  column-gap: 16px;
+}
+
+mat-toolbar a:first-child {
+  margin-right: 24px;
+}
+
+mat-toolbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.last {
+  margin-left: auto;
+}
+
+mat-toolbar a mat-icon {
+  transform: translateY(20%);
+}
+
+mat-sidenav {
+    padding: 16px 24px;
+    background-color: #e5edee;
+}
+
+mat-sidenav a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    padding-bottom: 16px;
+    text-align: right;
+}
+
+div {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 300px) {
+  mat-sidenav-container a {
+    font-size: 0.8rem;
+  }
+}

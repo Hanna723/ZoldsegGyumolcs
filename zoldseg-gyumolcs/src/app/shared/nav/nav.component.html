@@ -1,0 +1,28 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" position="end" fixedInViewport="true">
+    <div>
+      <a routerLink="/main">Home</a>
+      <a *ngIf="user" routerLink="/profile">Profile</a>
+      <a routerLink="/products/list">Browse</a>
+      <a *ngIf="user" routerLink="/cart">Cart</a>
+      <a *ngIf="!user" routerLink="/auth/login">Login</a>
+      <a *ngIf="user" routerLink="/auth/login" (click)="logOut()">Logout</a>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <a routerLink="/main">Fruits & Vegetables</a>
+      <a routerLink="/main" fxHide.xs>Home</a>
+      <a *ngIf="user" routerLink="/profile" fxHide.xs>Profile</a>
+      <a routerLink="/products/list" fxHide.xs>Browse</a>
+      <a *ngIf="user" routerLink="/cart" fxHide.xs>
+        <mat-icon>shopping_cart</mat-icon>
+      </a>
+      <a *ngIf="!user" class="last" routerLink="/auth/login" fxHide.xs>Login</a>
+      <a *ngIf="user" class="last" routerLink="/auth/login" (click)="logOut()" fxHide.xs>Logout</a>
+      <button class="last" fxHide.gt-xs mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
