@@ -4,6 +4,8 @@ import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/User';
 import { AuthService } from '../shared/services/auth.service';
 import { Subscription } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -26,7 +28,8 @@ export class ProfileComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -62,20 +65,38 @@ export class ProfileComponent implements OnInit {
         },
       };
 
-      this.userService.update(user);
+      this.userService.update(user).then(() => {
+        this.openDialog('Profile successfully updated!', 'Ok');
+      });
     }
   }
 
   deleteProfile() {
-    if (this.id) {
-      this.subscription?.unsubscribe();
-      this.userService.delete(this.id).then(() => {
-        this.authService.deleteUser();
-        this.authService.logOut();
-        this.profileForm.reset();
-        this.profileForm.markAsPristine();
-        this.profileForm.markAsUntouched();
-      });
-    }
+    const dialogRef = this.openDialog(
+      'Warning! Your profile will be deleted forever!',
+      'Cancel',
+      true
+    );
+    const dialogSubscription = dialogRef.componentInstance.deleteEvent.subscribe(() => {
+      if (this.id) {
+        this.subscription?.unsubscribe();
+        this.userService.delete(this.id).then(() => {
+          this.authService.deleteUser();
+        });
+      }
+      dialogSubscription.unsubscribe();
+    });
+  }
+
+  openDialog(title: string, button: string, del: boolean = false) {
+    return this.dialog.open(DialogComponent, {
+      width: '350px',
+      height: del ? '155px' : '130px',
+      data: {
+        title: title,
+        button: button,
+        delete: del,
+      },
+    });
   }
 }

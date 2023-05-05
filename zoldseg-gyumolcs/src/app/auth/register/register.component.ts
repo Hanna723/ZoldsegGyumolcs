@@ -4,6 +4,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/User';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ValidatorService } from 'src/app/shared/services/validator.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
   selector: 'app-register',
@@ -13,23 +15,29 @@ import { ValidatorService } from 'src/app/shared/services/validator.service';
 export class RegisterComponent {
   hide = true;
   hide2 = true;
-  registrationForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    password2: new FormControl('', [Validators.required]),
-    country: new FormControl('', [Validators.required]),
-    postal_code: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    street: new FormControl('', [Validators.required]),
-    number: new FormControl('', [Validators.required]),
-  },
-  {
-    validators: [ValidatorService.equals('password', 'password2')]
-  });
+  registrationForm: FormGroup = new FormGroup(
+    {
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6),
+      ]),
+      password2: new FormControl('', [Validators.required]),
+      country: new FormControl('', [Validators.required]),
+      postal_code: new FormControl('', [Validators.required]),
+      city: new FormControl('', [Validators.required]),
+      street: new FormControl('', [Validators.required]),
+      number: new FormControl('', [Validators.required]),
+    },
+    {
+      validators: [ValidatorService.equals('password', 'password2')],
+    }
+  );
 
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    public dialog: MatDialog
   ) {}
 
   onSubmit() {
@@ -47,14 +55,14 @@ export class RegisterComponent {
             postal_code: this.registrationForm.controls['postal_code'].value,
             city: this.registrationForm.controls['city'].value,
             street: this.registrationForm.controls['street'].value,
-            number: this.registrationForm.controls['number'].value
+            number: this.registrationForm.controls['number'].value,
           },
         };
         this.userService
           .create(user)
           .then(() => {
-            console.log('Success?');
-            // popup?
+            this.authService.logOut();
+            this.openDialog();
           })
           .catch((err) => {
             console.error(err);
@@ -63,5 +71,16 @@ export class RegisterComponent {
       .catch((err) => {
         console.error(err);
       });
+  }
+
+  openDialog(): void {
+    this.dialog.open(DialogComponent, {
+      width: '350px',
+      height: '130px',
+      data: {
+        title: 'Registration succesful!',
+        button: 'Ok'
+      }
+    });
   }
 }

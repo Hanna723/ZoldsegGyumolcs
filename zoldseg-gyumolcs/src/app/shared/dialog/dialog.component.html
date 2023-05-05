@@ -1,0 +1,9 @@
+<div class="container">
+    <h1 mat-dialog-title>{{ data.title }}</h1>
+    <div mat-dialog-actions>
+        <button *ngIf="data.delete" mat-stroked-button color="accent" (click)="onDelete()" routerLink="/auth/login">Delete</button>
+        <button mat-flat-button color="accent" (click)="onCancel()" cdkFocusInitial [routerLink]="link">
+            {{ data.button }}
+        </button>
+    </div>
+</div>
