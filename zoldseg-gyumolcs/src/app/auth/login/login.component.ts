@@ -21,8 +21,7 @@ export class LoginComponent {
     this.authService.login(
       this.loginForm.controls['email'].value,
       this.loginForm.controls['password'].value
-    ).then(credentials => {
-      console.log(credentials);
+    ).then(() => {
       this.router.navigateByUrl('/products/list');
     }).catch(err => {
       console.error(err);

@@ -3,7 +3,7 @@
 
 div:has(form) {
   width: 500px;
-  margin: 150px auto;
+  margin: 100px auto;
   border-radius: 10px;
   box-shadow: 0 0 5px #0c3b4255;
   background-color: white;
@@ -47,6 +47,17 @@ form button {
 
 .selected a {
   text-decoration: underline;
+}
+
+fieldset {
+  border-radius: 5px;
+  margin-bottom: 24px;
+  padding: 16px;
+  border-color: rgb(212, 212, 212);
+}
+
+fieldset mat-form-field {
+  width: 100%;
 }
 
 @media only screen and (max-width: 550px) {

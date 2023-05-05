@@ -14,8 +14,7 @@
       <mat-error *ngIf="registrationForm.controls['email'].errors?.['required']"
         >This field is mandatory!</mat-error
       >
-      <mat-error
-        *ngIf="registrationForm.controls['email'].errors?.['email']"
+      <mat-error *ngIf="registrationForm.controls['email'].errors?.['email']"
         >The email must be in the format of example@mail.com!</mat-error
       >
     </mat-form-field>
@@ -38,6 +37,10 @@
         *ngIf="registrationForm.controls['password'].errors?.['required']"
         >This field is mandatory!</mat-error
       >
+      <mat-error
+        *ngIf="registrationForm.controls['password'].errors?.['minLength']"
+        >The password must be at least 6 characters long!</mat-error
+      >
     </mat-form-field>
     <mat-form-field>
       <mat-label for="password2">Repeat password</mat-label>
@@ -58,7 +61,55 @@
         *ngIf="registrationForm.controls['password2'].errors?.['required']"
         >This field is mandatory!</mat-error
       >
+      <mat-error
+        *ngIf="registrationForm.controls['password2'].errors?.['equals']"
+        >The entered passwords must match!</mat-error
+      >
     </mat-form-field>
+    <fieldset>
+      <legend>Address</legend>
+      <mat-form-field>
+        <mat-label for="country">Country</mat-label>
+        <input matInput type="text" formControlName="country" />
+        <mat-error
+          *ngIf="registrationForm.controls['country'].errors?.['required']"
+          >This field is mandatory!</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="postal_code">Postal Code</mat-label>
+        <input matInput type="text" formControlName="postal_code" />
+        <mat-error
+          *ngIf="registrationForm.controls['postal_code'].errors?.['required']"
+          >This field is mandatory!</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="city">City</mat-label>
+        <input matInput type="text" formControlName="city" />
+        <mat-error
+          *ngIf="registrationForm.controls['city'].errors?.['required']"
+          >This field is mandatory!</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="street">Street name</mat-label>
+        <input matInput type="text" formControlName="street" />
+        <mat-error
+          *ngIf="registrationForm.controls['street'].errors?.['required']"
+          >This field is mandatory!</mat-error
+        >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="number">Street Number</mat-label>
+        <input matInput type="text" formControlName="number" />
+        <mat-error
+          *ngIf="registrationForm.controls['number'].errors?.['required']"
+          >This field is mandatory!</mat-error
+        >
+      </mat-form-field>
+    </fieldset>
     <button mat-flat-button color="accent" type="submit">Sign up</button>
   </form>
 </div>
+<div></div>
