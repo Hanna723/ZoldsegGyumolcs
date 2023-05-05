@@ -1,0 +1,49 @@
+mat-card {
+  width: 60vw;
+  margin: 50px auto;
+  display: flex;
+  flex-direction: row;
+  column-gap: 24px;
+  padding: 24px;
+}
+
+mat-card img {
+  width: 25vw;
+  flex: 1;
+}
+
+mat-card div {
+  flex: 1;
+}
+
+@media only screen and (max-width: 850px) {
+  mat-card {
+    width: 80vw;
+  }
+
+  mat-card img {
+    width: 20vw;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  mat-card {
+    flex-direction: column;
+    width: 60vw;
+  }
+
+  mat-card img {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+    p {
+        font-size: 12px;
+        margin-bottom: 4px;
+    }
+
+    mat-card-title {
+        font-size: 18px;
+    }
+  }

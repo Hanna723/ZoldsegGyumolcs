@@ -1,1 +1,23 @@
-<p>preview works!</p>
+<mat-card *ngIf="product">
+  <img alt="Product image" [src]="product.imageUrl" />
+  <div>
+    <mat-card-header>
+      <mat-card-title>
+        {{ product.name }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Type: {{ product.type }}</p>
+      <p>Country of origin: {{ product.country }}</p>
+      <p>{{ product.price }} Ft/kg</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <form>
+        <button mat-flat-button color="accent" routerLink="/products/preview">
+          Order
+        </button>
+      </form>
+    </mat-card-actions>
+  </div>
+</mat-card>
+<div *ngIf="!product">This product does not exist!</div>

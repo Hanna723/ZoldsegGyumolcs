@@ -11,7 +11,7 @@ const routes: Routes = [{
       component: ListComponent
     },
     {
-      path: 'preview',
+      path: 'preview/:id',
       component: PreviewComponent
     },
     {
