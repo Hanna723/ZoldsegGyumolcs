@@ -1,1 +1,16 @@
-<p>list works!</p>
+<div>
+    <mat-card *ngFor="let product of products">
+        <mat-card-header>
+            <mat-card-title>
+                {{product.name}}
+            </mat-card-title>
+        </mat-card-header>
+        <img alt="Product image" [src]="product.imageUrl">
+        <mat-card-content>
+            {{product.price}} Ft/kg
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-flat-button color="accent" [routerLink]="['/products/preview', product.id]">Order</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
