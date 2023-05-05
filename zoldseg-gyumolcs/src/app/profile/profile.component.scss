@@ -1,0 +1,17 @@
+div:has(form) {
+    padding-bottom: 24px;
+}
+
+div + div {
+    height: 50px;
+}
+
+form + button {
+    margin: auto;
+    display: block;
+}
+
+div:first-child {
+    margin-bottom: 24px;
+    font-size: 16px;
+}

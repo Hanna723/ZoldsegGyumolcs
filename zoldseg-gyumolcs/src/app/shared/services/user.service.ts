@@ -18,18 +18,29 @@ export class UserService {
   }
 
   getAll() {
-    return this.angularFirestore.collection<User>(this.collectionName).valueChanges();
+    return this.angularFirestore
+      .collection<User>(this.collectionName)
+      .valueChanges();
   }
 
   getById(id: string) {
-    return this.angularFirestore.collection<User>(this.collectionName).doc(id).valueChanges();
+    return this.angularFirestore
+      .collection<User>(this.collectionName)
+      .doc(id)
+      .valueChanges();
   }
 
   update(user: User) {
-    this.angularFirestore.collection<User>(this.collectionName).doc(user.id).set(user);
+    return this.angularFirestore
+      .collection<User>(this.collectionName)
+      .doc(user.id)
+      .set(user);
   }
 
   delete(id: string) {
-    return this.angularFirestore.collection<User>(this.collectionName).doc(id).delete();
+    return this.angularFirestore
+      .collection<User>(this.collectionName)
+      .doc(id)
+      .delete();
   }
 }
