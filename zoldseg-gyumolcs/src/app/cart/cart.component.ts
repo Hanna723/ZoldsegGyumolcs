@@ -68,6 +68,7 @@ export class CartComponent implements OnInit, AfterViewInit {
         this.createEmptyOrder(JSON.parse(localUser).uid);
         this.order = undefined;
         this.extendedOrder = undefined;
+        this.removeEvent.emit('removed');
       });
     }
   }

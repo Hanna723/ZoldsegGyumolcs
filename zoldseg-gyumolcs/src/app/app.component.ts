@@ -42,6 +42,5 @@ export class AppComponent implements OnInit {
       const order = JSON.parse(localOrder);
       this.amount = order.products.length;
     }
-    console.log('called');
   }
 }

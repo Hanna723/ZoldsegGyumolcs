@@ -12,16 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/nav/nav.component';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { provideStorage,getStorage } from '@angular/fire/storage';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { DialogComponent } from './shared/dialog/dialog.component';
 import { UserService } from './shared/services/user.service';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatBadgeModule } from '@angular/material/badge';
+import { OrderTableDataPipe } from './shared/pipes/order-table-data.pipe';
 
 @NgModule({
-  declarations: [AppComponent, NavComponent, DialogComponent],
+  declarations: [AppComponent, NavComponent, DialogComponent, OrderTableDataPipe],
   imports: [
     BrowserModule,
     AppRoutingModule,

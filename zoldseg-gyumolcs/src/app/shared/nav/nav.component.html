@@ -12,8 +12,8 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <a routerLink="/main">Fruits & Vegetables</a>
-      <a routerLink="/main" fxHide.xs>Home</a>
       <a *ngIf="user" routerLink="/profile" fxHide.xs>Profile</a>
+      <a routerLink="/orders" fxHide.xs>My orders</a>
       <a routerLink="/products/list" fxHide.xs>Browse</a>
       <a *ngIf="user" routerLink="/cart" fxHide.xs>
         <mat-icon *ngIf="orderAmount == 0">shopping_cart</mat-icon>

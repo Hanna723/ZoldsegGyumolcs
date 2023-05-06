@@ -1,0 +1,21 @@
+<table
+  mat-table
+  *ngIf="tableData"
+  [dataSource]="tableData"
+  class="mat-elevation-z8"
+>
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef>Time of Order</th>
+    <td mat-cell *matCellDef="let element">{{ element.time }}</td>
+  </ng-container>
+  <ng-container matColumnDef="time2">
+    <th mat-header-cell *matHeaderCellDef>Time of Delivery</th>
+    <td mat-cell *matCellDef="let element">{{ element.time2 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef>Total Price</th>
+    <td mat-cell *matCellDef="let element">{{ element.price }} Ft</td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+</table>

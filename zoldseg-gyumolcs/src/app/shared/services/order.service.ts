@@ -19,7 +19,7 @@ export class OrderService {
   getAll(userId: string) {
     return this.angularFirestore
       .collection<Order>(this.collectionName, (ref) =>
-        ref.where('userId', '==', userId)
+        ref.where('user', '==', userId).orderBy('time', 'desc')
       )
       .valueChanges();
   }
