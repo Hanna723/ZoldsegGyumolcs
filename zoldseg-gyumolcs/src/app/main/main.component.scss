@@ -1,0 +1,68 @@
+div {
+  width: 70vw;
+  margin: 200px auto;
+  text-align: center;
+  background-image: url('../../assets/fruits-and-vegetables.avif');
+  background-size: 100%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+h1 {
+  line-height: 1;
+  font-size: 120px;
+  font-weight: 1000;
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 860px) {
+  h1 {
+    font-size: 100px;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  h1 {
+    font-size: 80px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 60px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  h1 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+
+  div {
+    margin-top: 100px;
+  }
+}
+
+@media only screen and (max-width: 290px) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h3 {
+    font-size: 12px;
+  }
+}
