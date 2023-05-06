@@ -15,3 +15,9 @@ div:first-child {
   margin-bottom: 24px;
   font-size: 16px;
 }
+
+@media only screen and (max-width: 400px) {
+  div + div {
+    height: 0;
+  }
+}

@@ -27,3 +27,23 @@ mat-selection-list button {
   margin: 150px auto;
   width: max-content;
 }
+
+@media only screen and (max-width: 700px) {
+  mat-selection-list {
+    width: 75vw;
+  }
+
+  .remove {
+    width: 75vw;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  mat-selection-list {
+    width: 90vw;
+  }
+
+  .remove {
+    width: 90vw;
+  }
+}
