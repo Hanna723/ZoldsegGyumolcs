@@ -11,13 +11,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './shared/nav/nav.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { DialogComponent } from './shared/dialog/dialog.component';
+import { UserService } from './shared/services/user.service';
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [AppComponent, NavComponent, DialogComponent],
@@ -30,12 +31,13 @@ import { DialogComponent } from './shared/dialog/dialog.component';
     MatIconModule,
     MatSidenavModule,
     MatButtonModule,
+    MatBadgeModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

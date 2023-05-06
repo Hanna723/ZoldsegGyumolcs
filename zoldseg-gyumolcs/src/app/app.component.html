@@ -1,2 +1,2 @@
-<app-nav></app-nav>
-<router-outlet></router-outlet>
+<app-nav [orderAmount]="amount"></app-nav>
+<router-outlet (activate)="subscribeToLocalStorage($event)"></router-outlet>

@@ -1,1 +1,32 @@
-<p>cart works!</p>
+<div class="remove" *ngIf="extendedOrder && extendedOrder.products.length !== 0 && orderList">
+  Select items to remove them from your cart!
+  <form
+    *ngIf="orderList.selectedOptions.selected.length > 0"
+    [formGroup]="deleteForm"
+    (ngSubmit)="onDelete()"
+  >
+    <button mat-flat-button color="accent" type="submit">
+      Remove selected items
+    </button>
+  </form>
+</div>
+<mat-selection-list
+  #orderList
+  *ngIf="extendedOrder && extendedOrder.products.length !== 0"
+>
+  <mat-list-option
+    *ngFor="let product of extendedOrder.products"
+    [value]="product.id"
+  >
+    <span matListItemTitle>{{ product.name }}</span>
+    <span matListItemLine>Amount: {{ product.amount }} kg</span>
+    <span matListItemLine>{{ product.price }} Ft</span>
+  </mat-list-option>
+  <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+    <h3>Total: {{ extendedOrder.price }} Ft</h3>
+    <button mat-flat-button color="accent" type="submit">Order</button>
+  </form>
+</mat-selection-list>
+<div class="empty" *ngIf="!extendedOrder || extendedOrder.products.length === 0">
+  Your cart is empty!
+</div>

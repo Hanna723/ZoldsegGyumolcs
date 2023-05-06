@@ -30,6 +30,14 @@ export class UserService {
       .valueChanges();
   }
 
+  getByEmail(email: string) {
+    return this.angularFirestore
+      .collection<User>(this.collectionName, (ref) =>
+        ref.where('email', '==', email)
+      )
+      .valueChanges();
+  }
+
   update(user: User) {
     return this.angularFirestore
       .collection<User>(this.collectionName)

@@ -16,6 +16,11 @@ mat-card div {
   flex: 1;
 }
 
+mat-form-field {
+  width: 80px;
+  margin-right: 16px;
+}
+
 @media only screen and (max-width: 850px) {
   mat-card {
     width: 80vw;
@@ -38,12 +43,17 @@ mat-card div {
 }
 
 @media only screen and (max-width: 400px) {
-    p {
-        font-size: 12px;
-        margin-bottom: 4px;
-    }
-
-    mat-card-title {
-        font-size: 18px;
-    }
+  p {
+    font-size: 12px;
+    margin-bottom: 4px;
   }
+
+  mat-card-title {
+    font-size: 18px;
+  }
+}
+
+.empty {
+  margin: 150px auto;
+  width: max-content;
+}
