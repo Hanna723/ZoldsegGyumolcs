@@ -1,11 +1,21 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { Order } from '../shared/models/Order';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+  ViewChild,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+
+import { FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSelectionList } from '@angular/material/list';
+
 import { ProductService } from '../shared/services/product.service';
 import { OrderService } from '../shared/services/order.service';
-import { MatDialog } from '@angular/material/dialog';
+import { Order } from '../shared/models/Order';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
-import { FormGroup } from '@angular/forms';
-import { MatSelectionList } from '@angular/material/list';
 
 @Component({
   selector: 'app-cart',
@@ -45,7 +55,7 @@ export class CartComponent implements OnInit, AfterViewInit {
       this.extendedOrder = JSON.parse(localOrder);
 
       this.extendedOrder?.products.forEach((prod) => {
-        let product = this.productService.getById(prod.id).subscribe((data) => {
+        this.productService.getById(prod.id).subscribe((data) => {
           if (data) {
             prod.name = data.name;
             prod.price = data.price * prod.amount;
@@ -59,7 +69,7 @@ export class CartComponent implements OnInit, AfterViewInit {
     this.changeDetectorRef.detectChanges();
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const localUser = localStorage.getItem('user');
     if (this.order && localUser) {
       this.order.time = new Date();
@@ -84,18 +94,18 @@ export class CartComponent implements OnInit, AfterViewInit {
     });
   }
 
-  createEmptyOrder(uid: string) {
+  createEmptyOrder(uid: string): void {
     const order: Order = {
       user: uid,
       products: [],
       price: 0,
-      time: new Date,
+      time: new Date(),
     };
 
     localStorage.setItem('order', JSON.stringify(order));
   }
 
-  onDelete() {
+  onDelete(): void {
     const selected = this.orderList?.selectedOptions.selected;
     selected?.forEach((el) => {
       this.productService.getById(el.value).subscribe((data) => {

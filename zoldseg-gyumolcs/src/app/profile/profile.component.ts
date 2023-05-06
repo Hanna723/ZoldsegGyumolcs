@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+
 import { UserService } from '../shared/services/user.service';
 import { User } from '../shared/models/User';
 import { AuthService } from '../shared/services/auth.service';
-import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
@@ -32,7 +33,7 @@ export class ProfileComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     const loggedInUser = localStorage.getItem('user');
     if (loggedInUser) {
       this.id = JSON.parse(loggedInUser).uid;
@@ -51,7 +52,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.id && this.email) {
       const user: User = {
         id: this.id,
@@ -71,24 +72,25 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  deleteProfile() {
+  deleteProfile(): void {
     const dialogRef = this.openDialog(
       'Warning! Your profile will be deleted forever!',
       'Cancel',
       true
     );
-    const dialogSubscription = dialogRef.componentInstance.deleteEvent.subscribe(() => {
-      if (this.id) {
-        this.subscription?.unsubscribe();
-        this.userService.delete(this.id).then(() => {
-          this.authService.deleteUser();
-        });
-      }
-      dialogSubscription.unsubscribe();
-    });
+    const dialogSubscription =
+      dialogRef.componentInstance.deleteEvent.subscribe(() => {
+        if (this.id) {
+          this.subscription?.unsubscribe();
+          this.userService.delete(this.id).then(() => {
+            this.authService.deleteUser();
+          });
+        }
+        dialogSubscription.unsubscribe();
+      });
   }
 
-  openDialog(title: string, button: string, del: boolean = false) {
+  openDialog(title: string, button: string, del: boolean = false): MatDialogRef<DialogComponent, any> {
     return this.dialog.open(DialogComponent, {
       width: '350px',
       height: del ? '155px' : '130px',

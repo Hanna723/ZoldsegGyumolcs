@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -17,14 +18,17 @@ export class LoginComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  onSubmit() {
-    this.authService.login(
-      this.loginForm.controls['email'].value,
-      this.loginForm.controls['password'].value
-    ).then(() => {
-      this.router.navigateByUrl('/products/list');
-    }).catch(err => {
-      console.error(err);
-    });
+  onSubmit(): void {
+    this.authService
+      .login(
+        this.loginForm.controls['email'].value,
+        this.loginForm.controls['password'].value
+      )
+      .then(() => {
+        this.router.navigateByUrl('/products/list');
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 }

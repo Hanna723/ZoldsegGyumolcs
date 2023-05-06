@@ -1,8 +1,9 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Product } from '../../shared/models/Product';
-import { ProductService } from 'src/app/shared/services/product.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { ProductService } from 'src/app/shared/services/product.service';
+import { Product } from '../../shared/models/Product';
 import { Order } from 'src/app/shared/models/Order';
 
 @Component({
@@ -40,7 +41,7 @@ export class PreviewComponent implements OnInit {
       });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const localOrder = localStorage.getItem('order');
     if (localOrder && this.product) {
       let order: Order = JSON.parse(localOrder);

@@ -1,16 +1,16 @@
 div {
-    margin: 100px 50px;
-    display: flex;
-    flex-wrap: wrap;
-    column-gap: 32px;
-    row-gap: 32px;
+  margin: 100px 50px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  row-gap: 32px;
 }
 
 mat-card {
-    width: 300px;
-    padding: 24px;
+  width: 300px;
+  padding: 24px;
 }
 
 mat-card-content {
-    padding-top: 8px;
+  padding-top: 8px;
 }

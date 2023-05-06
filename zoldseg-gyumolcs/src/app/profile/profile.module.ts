@@ -14,9 +14,7 @@ import { UserService } from '../shared/services/user.service';
 import { AuthService } from '../shared/services/auth.service';
 
 @NgModule({
-  declarations: [
-    ProfileComponent
-  ],
+  declarations: [ProfileComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
@@ -25,11 +23,8 @@ import { AuthService } from '../shared/services/auth.service';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
   ],
-  providers: [
-    UserService,
-    AuthService
-  ]
+  providers: [UserService, AuthService],
 })
-export class ProfileModule { }
+export class ProfileModule {}

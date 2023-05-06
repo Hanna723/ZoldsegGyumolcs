@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PreviewComponent } from './products/preview/preview.component';
 import { CartComponent } from './cart/cart.component';
 
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
     this.setAmount();
   }
 
-  subscribeToLocalStorage(componentRef: any) {
+  subscribeToLocalStorage(componentRef: any): void {
     if (!(componentRef instanceof PreviewComponent)) {
       this.subscribeWithCart(componentRef);
       return;
@@ -26,17 +27,17 @@ export class AppComponent implements OnInit {
     });
   }
 
-  subscribeWithCart(componentRef: any) {
+  subscribeWithCart(componentRef: any): void {
     if (!(componentRef instanceof CartComponent)) {
       return;
     }
     const childComponent: CartComponent = componentRef;
-      childComponent.removeEvent.subscribe(() => {
-        this.setAmount();
-      });
+    childComponent.removeEvent.subscribe(() => {
+      this.setAmount();
+    });
   }
 
-  setAmount() {
+  setAmount(): void {
     const localOrder = localStorage.getItem('order');
     if (localOrder) {
       const order = JSON.parse(localOrder);

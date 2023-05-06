@@ -11,9 +11,13 @@ export class DialogComponent implements OnInit {
   @Output() deleteEvent = new EventEmitter<string>();
   link = this.data.title == 'Registration succesful!' ? '/auth/login' : '';
 
-  constructor(public dialogRef: MatDialogRef<DialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private router: Router) {};
+  constructor(
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private router: Router
+  ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (!this.link) {
       this.link = this.router.url;
     }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
+
 import { Product } from '../models/Product';
 
 @Injectable({
@@ -9,7 +10,10 @@ import { Product } from '../models/Product';
 export class ProductService {
   collectionName = 'Products';
 
-  constructor(private angularFirestore: AngularFirestore, private storage: AngularFireStorage) {}
+  constructor(
+    private angularFirestore: AngularFirestore,
+    private storage: AngularFireStorage
+  ) {}
 
   create(product: Product) {
     return this.angularFirestore

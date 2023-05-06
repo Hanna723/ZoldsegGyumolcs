@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { OrderService } from '../shared/services/order.service';
-import { Order } from '../shared/models/Order';
 import { OrderTableDataPipe } from '../shared/pipes/order-table-data.pipe';
 import { OrderWithTableData } from '../shared/models/OrderWithTableData';
 

@@ -24,8 +24,8 @@ export class AuthService {
   }
 
   deleteUser() {
-    this.auth.currentUser.then(user => {
+    this.auth.currentUser.then((user) => {
       user?.delete();
-    })
+    });
   }
 }

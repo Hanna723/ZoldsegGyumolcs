@@ -1,29 +1,29 @@
 .remove {
-    margin: 100px auto 16px auto;
-    width: 50vw;
+  margin: 100px auto 16px auto;
+  width: 50vw;
 }
 
 .remove form {
-    padding: 0;
+  padding: 0;
 }
 
 mat-selection-list {
-    width: 50vw;
-    margin: auto;
-    background-color: white;
-    border-radius: 5px;
+  width: 50vw;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
 }
 
 form {
-    padding: 16px;
+  padding: 16px;
 }
 
 mat-selection-list button {
-    margin: auto;
-    display: block;
+  margin: auto;
+  display: block;
 }
 
 .empty {
-    margin: 150px auto;
-    width: max-content;
+  margin: 150px auto;
+  width: max-content;
 }

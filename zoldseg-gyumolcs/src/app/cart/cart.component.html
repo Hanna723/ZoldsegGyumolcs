@@ -1,4 +1,7 @@
-<div class="remove" *ngIf="extendedOrder && extendedOrder.products.length !== 0 && orderList">
+<div
+  class="remove"
+  *ngIf="extendedOrder && extendedOrder.products.length !== 0 && orderList"
+>
   Select items to remove them from your cart!
   <form
     *ngIf="orderList.selectedOptions.selected.length > 0"
@@ -27,6 +30,9 @@
     <button mat-flat-button color="accent" type="submit">Order</button>
   </form>
 </mat-selection-list>
-<div class="empty" *ngIf="!extendedOrder || extendedOrder.products.length === 0">
+<div
+  class="empty"
+  *ngIf="!extendedOrder || extendedOrder.products.length === 0"
+>
   Your cart is empty!
 </div>

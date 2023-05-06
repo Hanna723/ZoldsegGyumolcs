@@ -23,14 +23,12 @@ export class NavComponent implements OnInit {
     });
   }
 
-  
-
   logOut(): void {
     this.authService.logOut();
     localStorage.removeItem('order');
   }
 
-  createEmptyOrder(uid: string) {
+  createEmptyOrder(uid: string): void {
     const order: Order = {
       user: uid,
       products: [],

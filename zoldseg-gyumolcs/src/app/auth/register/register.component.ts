@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { User } from 'src/app/shared/models/User';
-import { UserService } from 'src/app/shared/services/user.service';
-import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { MatDialog } from '@angular/material/dialog';
+
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/shared/models/User';
+import { ValidatorService } from 'src/app/shared/services/validator.service';
 import { DialogComponent } from 'src/app/shared/dialog/dialog.component';
 
 @Component({
@@ -40,7 +41,7 @@ export class RegisterComponent {
     public dialog: MatDialog
   ) {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.authService
       .signup(
         this.registrationForm.controls['email'].value,
@@ -79,8 +80,8 @@ export class RegisterComponent {
       height: '130px',
       data: {
         title: 'Registration succesful!',
-        button: 'Ok'
-      }
+        button: 'Ok',
+      },
     });
   }
 }

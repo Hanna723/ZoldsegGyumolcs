@@ -1,28 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { ListComponent } from './list/list.component';
 import { PreviewComponent } from './preview/preview.component';
 
-const routes: Routes = [{
-  path: '',
-  children: [
-    {
-      path: 'list',
-      component: ListComponent
-    },
-    {
-      path: 'preview/:id',
-      component: PreviewComponent
-    },
-    {
-      path: '**',
-      redirectTo: 'list'
-    }
-  ]
-}];
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'list',
+        component: ListComponent,
+      },
+      {
+        path: 'preview/:id',
+        component: PreviewComponent,
+      },
+      {
+        path: '**',
+        redirectTo: 'list',
+      },
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ProductsRoutingModule { }
+export class ProductsRoutingModule {}

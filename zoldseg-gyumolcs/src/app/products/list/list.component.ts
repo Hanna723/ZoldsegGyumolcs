@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../shared/models/Product';
+
 import { ProductService } from 'src/app/shared/services/product.service';
-import { RouterLink } from '@angular/router';
+import { Product } from '../../shared/models/Product';
 
 @Component({
   selector: 'app-list',

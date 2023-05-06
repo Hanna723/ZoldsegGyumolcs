@@ -17,11 +17,28 @@
       <a routerLink="/products/list" fxHide.xs>Browse</a>
       <a *ngIf="user" routerLink="/cart" fxHide.xs>
         <mat-icon *ngIf="orderAmount == 0">shopping_cart</mat-icon>
-        <mat-icon *ngIf="orderAmount" [matBadge]="orderAmount" matBadgeColor="accent">shopping_cart</mat-icon>
+        <mat-icon
+          *ngIf="orderAmount"
+          [matBadge]="orderAmount"
+          matBadgeColor="accent"
+          >shopping_cart</mat-icon
+        >
       </a>
       <a *ngIf="!user" class="last" routerLink="/auth/login" fxHide.xs>Login</a>
-      <a *ngIf="user" class="last" routerLink="/auth/login" (click)="logOut()" fxHide.xs>Logout</a>
-      <button class="last" fxHide.gt-xs mat-icon-button (click)="sidenav.toggle()">
+      <a
+        *ngIf="user"
+        class="last"
+        routerLink="/auth/login"
+        (click)="logOut()"
+        fxHide.xs
+        >Logout</a
+      >
+      <button
+        class="last"
+        fxHide.gt-xs
+        mat-icon-button
+        (click)="sidenav.toggle()"
+      >
         <mat-icon>menu</mat-icon>
       </button>
     </mat-toolbar>

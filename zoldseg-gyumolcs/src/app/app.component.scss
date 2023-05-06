@@ -26,23 +26,23 @@ form button {
 }
 
 .form-header div {
-    background-color: whitesmoke;
-    border-radius: 10px 10px 0 0;
-    height: 64px;
-    flex-grow: 1;
-    text-align: center;
+  background-color: whitesmoke;
+  border-radius: 10px 10px 0 0;
+  height: 64px;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .form-header a {
-    color: mat.get-color-from-palette($primary, default);
-    text-decoration: none;
-    font-size: 20px;
-    position: relative;
-    top: 30%;
+  color: mat.get-color-from-palette($primary, default);
+  text-decoration: none;
+  font-size: 20px;
+  position: relative;
+  top: 30%;
 }
 
 .form-header .selected {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 .selected a {
