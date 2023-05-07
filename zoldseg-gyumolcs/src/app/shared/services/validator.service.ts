@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
+import { UserService } from './user.service';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -24,6 +26,44 @@ export class ValidatorService {
           },
         });
         return { equals: true };
+      }
+      return null;
+    };
+  }
+
+  static emailExists(userService: UserService, email: string): ValidatorFn {
+    return (controls: AbstractControl) => {
+      const control = controls.get(email);
+      if (!control?.errors) {
+        userService.getByEmail(control?.value).subscribe((data) => {
+          if (data.length !== 0) {
+            control?.setErrors({
+              exists: {
+                takenEmail: control?.value,
+              },
+            });
+          }
+        });
+        return null;
+      }
+      return null;
+    };
+  }
+
+  static emailNotExists(userService: UserService, email: string): ValidatorFn {
+    return (controls: AbstractControl) => {
+      const control = controls.get(email);
+      if (!control?.errors) {
+        userService.getByEmail(control?.value).subscribe((data) => {
+          if (data.length === 0) {
+            control?.setErrors({
+              notExists: {
+                email: control?.value,
+              },
+            });
+          }
+        });
+        return null;
       }
       return null;
     };

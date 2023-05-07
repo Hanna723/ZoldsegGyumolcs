@@ -14,6 +14,9 @@
       <mat-error *ngIf="loginForm.controls['email'].errors?.['required']"
         >This field is mandatory!</mat-error
       >
+      <mat-error *ngIf="loginForm.controls['email'].errors?.['notExists']"
+        >There is no user with the given email!</mat-error
+      >
     </mat-form-field>
     <mat-form-field>
       <mat-label for="password">Password</mat-label>
@@ -33,7 +36,10 @@
       <mat-error *ngIf="loginForm.controls['password'].errors?.['required']"
         >This field is mandatory!</mat-error
       >
+      <mat-error *ngIf="loginForm.controls['password'].errors?.['wrong']"
+        >There is no user with the given email and password!</mat-error
+      >
     </mat-form-field>
-    <button mat-flat-button color="accent" type="submit">Log in</button>
+    <button [disabled]="!loginForm.valid" mat-flat-button color="accent" type="submit">Log in</button>
   </form>
 </div>

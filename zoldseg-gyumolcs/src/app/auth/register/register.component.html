@@ -17,6 +17,9 @@
       <mat-error *ngIf="registrationForm.controls['email'].errors?.['email']"
         >The email must be in the format of example@mail.com!</mat-error
       >
+      <mat-error *ngIf="registrationForm.controls['email'].errors?.['exists']"
+        >The entered email is already taken!</mat-error
+      >
     </mat-form-field>
     <mat-form-field>
       <mat-label for="password">Password</mat-label>
@@ -109,7 +112,14 @@
         >
       </mat-form-field>
     </fieldset>
-    <button mat-flat-button color="accent" type="submit">Sign up</button>
+    <button
+      [disabled]="!registrationForm.valid"
+      mat-flat-button
+      color="accent"
+      type="submit"
+    >
+      Sign up
+    </button>
   </form>
 </div>
 <div></div>

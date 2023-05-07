@@ -40,7 +40,14 @@
         >
       </mat-form-field>
     </fieldset>
-    <button mat-flat-button color="accent" type="submit">Save</button>
+    <button
+      [disabled]="!profileForm.valid"
+      mat-flat-button
+      color="accent"
+      type="submit"
+    >
+      Save
+    </button>
   </form>
   <button mat-stroked-button color="accent" (click)="deleteProfile()">
     Delete Profile

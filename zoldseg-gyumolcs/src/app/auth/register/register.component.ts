@@ -31,7 +31,7 @@ export class RegisterComponent {
       number: new FormControl('', [Validators.required]),
     },
     {
-      validators: [ValidatorService.equals('password', 'password2')],
+      validators: [ValidatorService.equals('password', 'password2'), ValidatorService.emailExists(this.userService, 'email')],
     }
   );
 

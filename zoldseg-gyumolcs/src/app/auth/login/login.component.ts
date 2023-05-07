@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ValidatorService } from 'src/app/shared/services/validator.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +13,23 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class LoginComponent {
   hide = true;
-  loginForm: FormGroup = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-  });
+  loginForm: FormGroup = new FormGroup(
+    {
+      email: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+    },
+    {
+      validators: [
+        ValidatorService.emailNotExists(this.userService, 'email'),
+      ],
+    }
+  );
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   onSubmit(): void {
     this.authService
@@ -28,7 +41,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/products/list');
       })
       .catch((err) => {
-        console.error(err);
+        this.loginForm.controls['password'].setErrors({'wrong': true});
       });
   }
 }

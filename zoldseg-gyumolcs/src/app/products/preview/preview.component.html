@@ -26,7 +26,12 @@
             >The amount must be a number!</mat-error
           >
         </mat-form-field>
-        <button mat-flat-button color="accent" type="submit">
+        <button
+          [disabled]="!productForm.valid"
+          mat-flat-button
+          color="accent"
+          type="submit"
+        >
           Add to cart
         </button>
       </form>
