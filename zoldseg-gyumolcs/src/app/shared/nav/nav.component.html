@@ -3,7 +3,7 @@
     <div>
       <a routerLink="/main">Home</a>
       <a *ngIf="user" routerLink="/profile">Profile</a>
-      <a *ngIf="user" routerLink="/orders" fxHide.xs>My orders</a>
+      <a *ngIf="user" routerLink="/orders">My orders</a>
       <a routerLink="/products/list">Browse</a>
       <a *ngIf="user" routerLink="/cart">Cart</a>
       <a *ngIf="!user" routerLink="/auth/login">Login</a>

@@ -3,12 +3,12 @@
     "zoldseggyumolcs-3f792": {
       "hosting": {
         "zoldseg-gyumolcs": [
-          "zoldseggyumolcs-webkert"
+          "zoldseggyumolcs-3f792"
         ]
       }
     }
   },
   "projects": {
-    "default": "zoldseggyumolcs-webkert"
+    "default": "zoldseggyumolcs-3f792"
   }
 }
