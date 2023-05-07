@@ -1,6 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Order } from 'src/app/shared/models/Order';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-nav',
@@ -9,9 +12,10 @@ import { Order } from 'src/app/shared/models/Order';
 })
 export class NavComponent implements OnInit {
   @Input() orderAmount: number = 0;
+  @ViewChild('sidenav') sidenav?: MatSidenav;
   user?: firebase.default.User | null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.isLoggedIn().subscribe((user) => {
@@ -21,6 +25,10 @@ export class NavComponent implements OnInit {
         this.createEmptyOrder(this.user?.uid);
       }
     });
+
+    this.router.events.subscribe(event => {
+      this.sidenav?.close();
+    })
   }
 
   logOut(): void {
